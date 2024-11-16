@@ -27,6 +27,7 @@
         $password = password_hash($pass,PASSWORD_BCRYPT);
         $Con_password = password_hash($C_pass,PASSWORD_BCRYPT);
 
+
         $token = bin2hex(random_bytes(15));
 
         $emailquery = "SELECT * FROM `register` where email = '$email'";
@@ -43,18 +44,19 @@
                $iquery = mysqli_query($Connection,$insertquery);
                if($iquery){
 
-            //     $subject = "simple email verification test";
-            //     $body =  "Hi, $username. Click here to activate your account 
-            //     http://localhost/email-verification/account_activation.php?token=$token";
-            //     $sender_email = "From: sammadaltaf43@gmail.com";
+                $subject = "simple email verification test";
+                $body =  "Hi, $username. Click here to activate your account 
+                http://localhost/email-verification/account_activation.php?token=$token";
+                $sender_email = "From: sammadaltaf43@gmail.com";
 
-            //     if(mail("sammadaltaf43@gmail.com",$subject,$body,$sender_email)){
-            //         $session['msg'] = "check you mail to activate your account $email";
-            //         header('location:login.php');
-            //     }
-            //     else{
-            //         echo "email send error";
-            //     }
+                if(mail("sammadaltaf43@gmail.com",$subject,$body,$sender_email)){
+                    $session['msg'] = "check you mail to activate your account $email";
+                    // session variable ki spelling galat hai: $_SESSION['msg'] hoga
+                    header('location:login.php');
+                }
+                else{
+                    echo "email send error";
+                }
                    ?>
                     <script>
                         alert("Data inserted sucessfully");

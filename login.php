@@ -65,7 +65,7 @@
             <?php
         }
     }
-    
+
     ?>
 
 
@@ -76,10 +76,12 @@
         <p class="title">Welcome back</p>
         <form class="form" action="#" method="POST">
             <input type="email" class="input" placeholder="Email" name="email" value="<?php
-            if(isset($_cookie['email_cookie'])) { echo $_cookie['email_cookie'];}?>">
+            if(isset($_COOKIE['email_cookie'])) { echo $_COOKIE['email_cookie'];}?>">
+            <!-- Spelling mistake: $_cookie small mein nahi capital mein likhte hain: $_COOKIE, aur ye super global associative array hota. -->
 
             <input type="password" class="input" placeholder="Password" name="pass" value="<?php
-            if(isset($_cookie['password_cookie'])) { echo $_cookie['password_cookie'];}?>">
+            if(isset($_COOKIE['password_cookie'])) { echo $_COOKIE['password_cookie'];}?>">
+            <!-- Same as above -->
 
             <div class="checkbox-div">
             <input type="checkbox" class="checkbox" name="checkbox">
